@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.laendleregio.seo</groupId>
+    <artifactId>poc-google-tagmanager</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <prerequisites>
+        <maven>3.5.0</maven>
+    </prerequisites>
+
+    <properties>
+        <!-- Explicitly declaring the source encoding eliminates the following message: -->
+        <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent! -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+        <project.build.lineEnding>LF</project.build.lineEnding>
+        <project.build.lineSeparator>\n</project.build.lineSeparator>
+
+        <!-- define the java version -->
+        <java.version>11</java.version>
+        <javac.compiler.version>javac11</javac.compiler.version>
+        <javac.compiler.source>11</javac.compiler.source>
+        <javac.compiler.target>11</javac.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.release>11</maven.compiler.release>
+
+        <!-- test -->
+        <junit.jupiter.version>5.5.2</junit.jupiter.version>
+        <junit.platform.version>1.5.2</junit.platform.version>
+        <version.maven-surefire-plugin>2.19.1</version.maven-surefire-plugin>
+        <version.selenium>3.141.59</version.selenium>
+
+        <version.lombok>1.18.24</version.lombok>
+        <version.log4j>2.17.0</version.log4j>
+        <version.slf4j>1.7.32</version.slf4j>
+
+        <!-- versions for the build processing -->
+        <!-- maven startup plugin versions -->
+        <version.maven.mininum>3.0.0</version.maven.mininum>
+        <version.properties-maven-plugin>1.0.0</version.properties-maven-plugin>
+        <version.maven-enforcer-plugin>1.4.1</version.maven-enforcer-plugin>
+        <version.maven-help-plugin>2.2</version.maven-help-plugin>
+
+        <version.maven-exec-plugin>1.6.0</version.maven-exec-plugin>
+        <version.maven-antrun-plugin>1.8</version.maven-antrun-plugin>
+
+        <!-- maven compile plugin versions -->
+        <version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
+
+        <!-- maven packaging plugin versions -->
+        <version.maven-jar-plugin>3.2.0</version.maven-jar-plugin>
+        <version.maven-war-plugin>3.2.3</version.maven-war-plugin>
+        <version.maven-ear-plugin>2.10.1</version.maven-ear-plugin>
+        <version.maven-ejb-plugin>2.5.1</version.maven-ejb-plugin>
+        <version.maven-processor-plugin>3.2.0</version.maven-processor-plugin>
+        <version.maven-shade-plugin>3.2.1</version.maven-shade-plugin>
+        <version.proguard-maven-plugin>2.0.13</version.proguard-maven-plugin>
+        <version.maven-resources-plugin>3.1.0</version.maven-resources-plugin>
+        <version.maven-assembly-plugin>3.2.0</version.maven-assembly-plugin>
+        <version.copy-rename-maven-plugin>1.0.1</version.copy-rename-maven-plugin>
+        <version.maven-clean-plugin>3.1.0</version.maven-clean-plugin>
+
+        <!-- static code analysis -->
+        <version.maven-checkstyle-plugin>3.1.2</version.maven-checkstyle-plugin>
+        <version.spotbugs-maven-plugin>4.7.0.0</version.spotbugs-maven-plugin>
+        <version.maven-pmd-plugin>3.16.0</version.maven-pmd-plugin>
+    </properties>
+
+    <dependencies>
+        <!-- - - - - - - - - - - -->
+        <!-- project dependency  -->
+        <!-- - - - - - - - - - - -->
+
+        <!-- - - - - - - - - - - -->
+        <!-- lombok dependency   -->
+        <!-- - - - - - - - - - - -->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${version.lombok}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+
+
+        <!-- - - - - - - - - - - -->
+        <!-- JUnit dependency    -->
+        <!-- - - - - - - - - - - -->
+
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- - - - - - - - - - - -->
+        <!-- Google APIs -->
+        <!-- - - - - - - - - - - -->
+
+        <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-tagmanager -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-tagmanager</artifactId>
+            <version>v2-rev20211027-1.32.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.34.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.auth/google-auth-library-oauth2-http -->
+        <dependency>
+            <groupId>com.google.auth</groupId>
+            <artifactId>google-auth-library-oauth2-http</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty -->
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-jetty</artifactId>
+            <version>1.33.3</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10.6</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.11</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${version.maven-compiler-plugin}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <release>11</release>
+                        <failOnError>true</failOnError>
+                        <showDeprecation>true</showDeprecation>
+                        <failOnWarning>false</failOnWarning>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${version.lombok}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>
