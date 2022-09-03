@@ -1,3 +1,9 @@
+#POC Google Tag manager:
+
+This is a POC project which was done to try out google tag manger api.
+To run this application you need to have an google tag manager account.
+Follow the instruction below to create google tag manager account and run this poc project.
+
 # How to configure Google tag manager
 
 ## Step 1 : Create tag manager account.
